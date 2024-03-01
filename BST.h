@@ -48,15 +48,23 @@ void insertNode( BST *b, int value ){
 while(!inserted){
    if(t->data >=value){
      /* move/insert to the left*/
-    
+     if(t->leftPtr==NULL){
+      t->leftPtr=new_node;
+      inserted=1;
      }
+     else t=t->leftPtr;
+   }
   	 
-  }
+  
    else{
-	      /* move/ insert to the right*/
-    
+	   /* move/ insert to the right*/
+      if(t->rightPtr==NULL){
+      t->rightPtr=new_node;
+      inserted=1;
+     }
+     else t=t->rightPtr;
     }
-	}
+	
    
   }//end while		
   }//end else;
@@ -69,7 +77,7 @@ while(!inserted){
 void inOrder( TreeNodePtr treePtr )
 { 
    // if tree is not empty, then traverse
-   if ( treePtr != NULL ) {        
+   if( treePtr != NULL ) {        
         
       inOrder( treePtr->leftPtr ); //Recursion to the left
  
